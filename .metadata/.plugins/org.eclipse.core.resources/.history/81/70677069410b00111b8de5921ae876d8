@@ -1,9 +1,0 @@
-package com.kv.service;
-
-import com.kv.dto.RideRequestDto;
-import com.kv.entity.RideEntity;
-
-public interface IRideService {
-
-	RideEntity requestRide(RideRequestDto request);
-}

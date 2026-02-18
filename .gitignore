@@ -1,0 +1,11 @@
+# Ignore Eclipse workspace metadata
+.metadata/
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignore Eclipse project settings
+.settings/
+.project
+.classpath

@@ -1,5 +1,0 @@
-package com.kv.enums;
-
-public enum RideStatus {
-
-}

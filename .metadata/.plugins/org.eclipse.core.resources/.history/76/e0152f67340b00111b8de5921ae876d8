@@ -1,0 +1,10 @@
+package com.kv.entity;
+
+
+public class RideEntity {
+
+	
+	private Long id;
+	private Double pickupLat;
+	
+}

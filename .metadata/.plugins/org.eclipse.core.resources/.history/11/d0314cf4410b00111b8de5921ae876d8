@@ -1,0 +1,46 @@
+package com.kv.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kv.RideStatus.VehicleType;
+import com.kv.dto.RideRequestDto;
+import com.kv.dto.RideResponseDto;
+import com.kv.entity.DriverEntity;
+import com.kv.entity.UserEntity;
+import com.kv.repository.DriverRepository;
+import com.kv.repository.RideRepository;
+import com.kv.repository.UserRepository;
+
+@Service
+public class RideServiceImpl implements IRideService {
+
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private RideRepository rideRepo;
+	
+	private DriverRepository driverRepo;
+	
+	@Override
+	public RideResponseDto requestRide(RideRequestDto request) {
+		
+		// Fetch User
+		UserEntity user = userRepo.findById(request.getUserId()).orElseThrow(() -> new RuntimeException("User Not Found"));
+		
+		//Fetch All Available Drivers
+		driverRepo.findByAvailableTrueAndVehicleType()
+		
+		return null;
+	}
+	
+	
+	
+	public DriverEntity findNearestDriver(double pickupLat, double pickupLong, VehicleType vehicleType) {
+		List<DriverEntity> driver = driverRepo.findByAvailableTrueAndVehicleType(vehicleType).;
+	}
+
+}

@@ -1,0 +1,24 @@
+package com.kv.dto;
+
+import com.kv.RideStatus.RideStatus;
+import com.kv.RideStatus.VehicleType;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+public class RideResponseDto {
+
+	 	private Long rideId;
+	    private Long driverId;
+	    private Long userId;
+	    private RideStatus status;
+	    private Double pickupLat;
+	    private Double pickupLong;
+	    private Double dropLat;
+	    private Double dropLong;
+	    private Double distanceKm;
+	    private Double fare;
+	    private VehicleType vehicleType;
+}

@@ -1,0 +1,11 @@
+package com.kv.entity;
+
+public enum RideStatus {
+
+	ACCEPTED,
+	STARTED,
+	REQUESTED,
+	COMPLETED,
+	CANCELLED,
+	ONGOING
+}

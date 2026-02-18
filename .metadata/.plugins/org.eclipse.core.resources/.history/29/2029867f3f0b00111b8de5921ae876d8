@@ -1,0 +1,8 @@
+package com.kv.service;
+
+import com.kv.dto.RideResponseDto;
+
+public interface IDriverService {
+
+	RideResponseDto updateLocation();
+}

@@ -1,0 +1,38 @@
+package com.kv.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kv.entity.DriverEntity;
+import com.kv.repository.DriverRepository;
+
+@Service
+public class DriverServiceImpl implements IDriverService {
+
+	@Autowired
+	private DriverRepository driverRepo;
+	
+	@Override
+	public DriverEntity updateLocation(Long d_id, double latitude, double longitude) {
+		DriverEntity driver = driverRepo.findById(d_id).orElseThrow(() -> 
+								new RuntimeException("Driver Not Found"));
+		driver.setLatitude(latitude);
+		driver.setLongitude(longitude);
+		return driverRepo.save(driver);
+	}
+
+	@Override
+	public DriverEntity setDriverAvailabilty(Long d_id, boolean available) {
+		driverRepo.findById(d_id).orElseThrow(() - > new RuntimeException("Driver Not FOund"))
+		return null;
+	}
+
+	@Override
+	public List<DriverEntity> getAvailableDrivers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

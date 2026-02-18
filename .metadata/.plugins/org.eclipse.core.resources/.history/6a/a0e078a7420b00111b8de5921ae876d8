@@ -1,0 +1,60 @@
+package com.kv.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.kv.RideStatus.VehicleType;
+import com.kv.dto.RideRequestDto;
+import com.kv.dto.RideResponseDto;
+import com.kv.entity.DriverEntity;
+import com.kv.entity.UserEntity;
+import com.kv.repository.DriverRepository;
+import com.kv.repository.RideRepository;
+import com.kv.repository.UserRepository;
+
+@Service
+public class RideServiceImpl implements IRideService {
+
+	@Autowired
+	private UserRepository userRepo;
+	
+	@Autowired
+	private RideRepository rideRepo;
+	
+	private DriverRepository driverRepo;
+	
+	@Override
+	public RideResponseDto requestRide(RideRequestDto request) {
+		
+		// Fetch User
+		UserEntity user = userRepo.findById(request.getUserId()).orElseThrow(() -> new RuntimeException("User Not Found"));
+		
+		//Fetch All Available Drivers
+		DriverEntity nearestDriver = findNearestDriver(request.getPickupLat(), request.getPickupLong(), request.getVehicleType());
+		 
+		if (nearestDriver == null) {
+	            throw new RuntimeException("No available driver found");
+	        }
+		return null;
+	}
+	
+	
+	
+	public DriverEntity findNearestDriver(double pickupLat, double pickupLong, VehicleType vehicleType) {
+		List<DriverEntity> availableDrivers = driverRepo.findByAvailableTrueAndVehicleType(vehicleType);
+		DriverEntity nearest = null;
+		double minDistance = Double.MAX_VALUE;
+		
+		for (DriverEntity driver : availableDrivers) {
+            double distance = Math.pow(driver.getLatitude() - pickupLat, 2) + Math.pow(driver.getLongitude() - pickupLong, 2);
+            if (distance < minDistance) {
+                minDistance = distance;
+                nearest = driver;
+            }
+        }
+        return nearest;
+	}
+
+}

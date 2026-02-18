@@ -1,0 +1,9 @@
+package com.kv.RideStatus;
+
+public enum DriverStatus {
+
+	OFFLINE,
+	OFF,
+	ONGOING,
+	AVAILABLE
+}

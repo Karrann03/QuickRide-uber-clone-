@@ -1,0 +1,5 @@
+package com.kv.config;
+
+public class SecurityConfig {
+
+}

@@ -1,0 +1,19 @@
+package com.kv.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.kv.entity.DriverEntity;
+import com.kv.entity.RideEntity;
+import com.kv.entity.UserEntity;
+
+@Repository
+public interface RideRepository extends JpaRepository<RideEntity, Long> {
+
+	// Find By User
+	List<RideEntity> findByUser(UserEntity user);
+	
+	List<RideEntity> findByDriver(DriverEntity driver);
+}

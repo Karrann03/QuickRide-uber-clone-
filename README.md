@@ -163,6 +163,23 @@ QuickRide
 
 ---
 
+## 📸 Screenshots
+
+##Home Page
+![Home Page](screenshots/Screenshot(12).png)
+
+### User Dashboard
+![User Dashboard](screenshots/Screenshot(21).png)
+
+### Ride Request
+![Ride Request](screenshots/Screenshot(23).png)
+
+### Ride Tracking
+![Ride Tracking](screenshots/Screenshot(25).png)
+
+### Driver Dashboard
+![Driver Dashboard](screenshots/![User Dashboard](screenshots/Screenshot(22).png))
+
 # ⚙️ Running the Project
 
 ## 1️⃣ Clone Repository

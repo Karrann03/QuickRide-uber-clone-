@@ -165,20 +165,20 @@ QuickRide
 
 ## 📸 Screenshots
 
-##Home Page
-![Home Page](Uber-Clone/screenshots/Screenshot(12).png)
+## Home Page
+![Home Page](Uber-Clone/screenshots/Screenshot%20(12).png)
 
 ### User Dashboard
-![User Dashboard](Uber-Clone/screenshots/Screenshot(21).png)
+![User Dashboard](Uber-Clone/screenshots/Screenshot%20(21).png)
 
 ### Ride Request
-![Ride Request](Uber-Clone/screenshots/Screenshot(23).png)
+![Ride Request](Uber-Clone/screenshots/Screenshot%20(23).png)
 
 ### Ride Tracking
-![Ride Tracking](Uber-Clone/screenshots/Screenshot(25).png)
+![Ride Tracking](Uber-Clone/screenshots/Screenshot%20(25).png)
 
 ### Driver Dashboard
-![Driver Dashboard](screenshots/![User Dashboard](Uber-Clone/screenshots/Screenshot(22).png))
+![Driver Dashboard](screenshots/![User Dashboard](Uber-Clone/screenshots/Screenshot%20(22).png))
 
 # ⚙️ Running the Project
 

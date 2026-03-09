@@ -1,0 +1,131 @@
+.dashboard-container{
+    min-height:100vh;
+    padding:25px;
+    background: radial-gradient(circle at top left,#1f1f1f,#0b0b0b 60%,#000);
+    color:white;
+}
+
+/* NAVBAR */
+
+.dashboard-navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 20px;
+    border-radius:18px;
+}
+
+/* glass effect */
+
+.glass{
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(14px);
+    border:1px solid rgba(255,255,255,0.15);
+}
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:20px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.logo-icon{
+    font-size:22px;
+}
+
+.logo-text{
+    letter-spacing:0.5px;
+}
+
+/* NAV LINKS */
+
+.nav-links{
+    display:flex;
+    gap:20px;
+}
+
+.nav-btn{
+    background:none;
+    border:none;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+    padding:6px 10px;
+    transition:0.2s;
+}
+
+.nav-btn:hover{
+    color:#ddd;
+}
+
+/* RIGHT SIDE */
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+/* PROFILE */
+
+.profile-circle{
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:white;
+    color:black;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* BUTTONS */
+
+.btn{
+    padding:8px 16px;
+    border-radius:12px;
+    border:none;
+    cursor:pointer;
+}
+
+.logout-btn{
+    background:#ff4d4d;
+    color:white;
+}
+
+.primary{
+    background:white;
+    color:black;
+}
+
+.secondary{
+    background:rgba(255,255,255,0.1);
+    color:white;
+}
+
+/* HERO */
+
+.dashboard-hero{
+    margin-top:40px;
+}
+
+.dashboard-hero h1{
+    font-size:40px;
+}
+
+.dashboard-hero p{
+    margin-top:10px;
+    opacity:0.8;
+}
+
+.buttons{
+    margin-top:20px;
+    display:flex;
+    gap:15px;
+}

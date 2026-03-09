@@ -1,0 +1,142 @@
+/* Ride Request Page CSS */
+
+/* Navbar */
+.dashboard-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.dashboard-navbar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.dashboard-navbar .nav-links button {
+  padding: 8px 16px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.dashboard-navbar .nav-links button:hover {
+  background-color: #ff7875;
+}
+
+/* Hero Section */
+.dashboard-hero {
+  text-align: center;
+  padding: 30px 20px;
+  color: #fff;
+}
+
+.dashboard-hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.dashboard-hero p {
+  font-size: 16px;
+  color: #ddd;
+}
+
+/* Buttons Section */
+.dashboard-hero .buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.dashboard-hero .buttons .btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+}
+
+/* Primary Button */
+.btn.primary {
+  background-color: #4caf50;
+  color: white;
+}
+
+.btn.primary:hover {
+  background-color: #45a049;
+}
+
+/* Secondary Button */
+.btn.secondary {
+  background-color: #2196f3;
+  color: white;
+}
+
+.btn.secondary:hover {
+  background-color: #1e88e5;
+}
+
+/* Logout Button */
+.btn.logout-btn {
+  background-color: #f44336;
+}
+
+.btn.logout-btn:hover {
+  background-color: #e53935;
+}
+
+/* Map Container */
+.map-container {
+  margin-top: 20px;
+  width: 100%;
+  height: 600px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Request Ride Button Below Map */
+.request-ride-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 14px 30px;
+  font-size: 18px;
+  border-radius: 8px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.request-ride-btn:hover {
+  background-color: #fb8c00;
+}
+
+.rr-input{
+  padding: 12px 12px;
+  border-radius: 14px;
+  outline: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+
+.rr-input::placeholder{
+  color: rgba(255,255,255,0.55);
+}

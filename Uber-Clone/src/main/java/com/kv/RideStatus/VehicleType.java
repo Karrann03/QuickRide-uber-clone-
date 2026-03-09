@@ -6,5 +6,5 @@ public enum VehicleType {
 	HATCHBACK,
 	CAR,
 	SUV,
-	MINI_UV,
+	MINI_SUV,
 }

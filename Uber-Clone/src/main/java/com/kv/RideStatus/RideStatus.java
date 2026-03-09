@@ -1,6 +1,6 @@
 package com.kv.RideStatus;
 
-public enum RideStatus {
+public enum RideStatus	{
 
 	ACCEPTED,
 	STARTED,

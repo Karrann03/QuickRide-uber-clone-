@@ -10,15 +10,21 @@ import lombok.Setter;
 @Getter
 public class RideResponseDto {
 
-	 	private Long rideId;
-	    private Long driverId;
-	    private Long userId;
-	    private String status;
-	    private Double pickupLat;
-	    private Double pickupLong;
-	    private Double dropLat;
-	    private Double dropLong;
-	    private Double distanceKm;
-	    private Double fare;
-	    private VehicleType vehicleType;
+	private Long rideId;
+	private Long driverId;
+	private Long userId;
+	private String UserName;
+	private String UserPhone;
+	private String status;
+	private Double pickupLat;
+	private Double pickupLong;
+	private Double dropLat;
+	private Double dropLong;
+	private Double DriverLat;
+	private Double DriverLong;
+	private Double distanceKm;
+	private Double fare;
+	// driver -> pickup distance
+	private Double distanceToPickupKm;
+	private VehicleType vehicleType;
 }

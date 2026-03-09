@@ -1,14 +1,20 @@
 package com.kv.entity;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kv.RideStatus.DriverStatus;
 import com.kv.RideStatus.RideStatus;
+import com.kv.RideStatus.VehicleType;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -42,13 +48,20 @@ public class RideEntity {
     @Column(name = "status")
     private RideStatus status;
     
+    @Column(name = "fare")
+    private Double fare;
+    
     @Enumerated(EnumType.STRING)
     @Column(name = "Driver_status")
     private DriverStatus driverStatus;
+    
+    @Enumerated(EnumType.STRING)
+    private VehicleType vehicleType;
 
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
+    private LocalDateTime assignedAt;
     private LocalDateTime completedAt;
     private LocalDateTime startedAt;
     
@@ -57,9 +70,13 @@ public class RideEntity {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "driver_id", referencedColumnName = "id")
+    @JsonIgnore
     private DriverEntity driver;
+    
+    @ElementCollection
+    private Set<Long> rejectedDriverIds = new HashSet();
 }
 
 	

@@ -2,7 +2,12 @@ package com.kv.RideStatus;
 
 public enum DriverStatus {
 
+	BUSY,
 	OFFLINE,
 	ONTRIP,
-	AVAILABLE
+	AVAILABLE,
+	PENDING,
+	ONLINE,
+	REQUESTED
+	
 }

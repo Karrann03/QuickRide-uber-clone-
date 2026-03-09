@@ -1,8 +1,8 @@
 package com.kv.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,47 +13,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kv.dto.RideRequestDto;
 import com.kv.dto.RideResponseDto;
-import com.kv.entity.DriverEntity;
-import com.kv.entity.RideEntity;
-import com.kv.entity.UserEntity;
-import com.kv.repository.DriverRepository;
-import com.kv.repository.RideRepository;
-import com.kv.repository.UserRepository;
 import com.kv.service.IRideService;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/ride")
+@Tag(name = "Ride APIs", description = "Operations related to ride booking")
 public class RideController {
 
 	@Autowired
 	private IRideService rideService;
-	
-	@Autowired
-    private RideRepository rideRepo;
 
-    @Autowired
-    private UserRepository userRepo;
-
-    @Autowired
-    private DriverRepository driverRepo;
 	
 	@PostMapping("/request")
-	public RideResponseDto requestRide(@RequestBody RideRequestDto request) {
-		return rideService.requestRide(request);
+	public ResponseEntity<RideResponseDto> requestRide(@RequestBody RideRequestDto request) {
+		
+		RideResponseDto dto = rideService.requestRide(request);
+		return ResponseEntity.ok(dto);
 	}
 	
-	 // Get all rides by user
-    @GetMapping("/user/{userId}")
-    public List<RideEntity> getRidesByUser(@PathVariable Long userId) {
-        UserEntity user = userRepo.findById(userId).orElseThrow();
-        return rideRepo.findByUser(user);
-    }
 
-    // Get all rides by driver
-    @GetMapping("/driver/{driverId}")
-    public List<RideEntity> getRidesByDriver(@PathVariable Long driverId) {
-        DriverEntity driver = driverRepo.findById(driverId).orElseThrow();
-        return rideRepo.findByDriver(driver);
+    @GetMapping("rideId/{rideId}")
+    public ResponseEntity<RideResponseDto> getRideById(@PathVariable Long rideId) {
+    	RideResponseDto dto = rideService.getRideById(rideId);
+		return ResponseEntity.ok(dto);
     }
+    
+    
+    @PostMapping("/{rideId}/{status}")
+    public ResponseEntity<RideResponseDto> updateRideStatus(@PathVariable Long rideId, @PathVariable String status) {
+		return ResponseEntity.ok(rideService.updateRideStatus(rideId, status));
+	}
+    
+    @PostMapping("/end/{rideId}")
+    public ResponseEntity<RideResponseDto> endRide(@PathVariable Long rideId) {
+		return ResponseEntity.ok(rideService.endRide(rideId));
+	}
 }

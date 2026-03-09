@@ -16,21 +16,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kv.RideStatus.DriverStatus;
-import com.kv.RideStatus.VehicleType;
+import com.kv.dto.RideResponseDto;
+import com.kv.dto.neabyDto;
 import com.kv.entity.DriverEntity;
-import com.kv.repository.DriverRepository;
-import com.kv.service.IDriverService;
+import com.kv.service.IRideService;
+import com.kv.service.driver.*;
+
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/driver")
+@Tag(name = "Driver APIs", description = "Operations related to Driver Details")
 public class DriverController {
 
 	@Autowired
 	private IDriverService driverService;
 	
 	@Autowired
-	private DriverRepository driverRepo;
+	private IRideService rideService;
+	
 	
 	// Register driver
     @PostMapping("/register")
@@ -46,12 +51,56 @@ public class DriverController {
 				
 	}
 	
+	@GetMapping("/{driverId}/available-rides")
+	public ResponseEntity<List<RideResponseDto>> availableRides(
+	        @PathVariable Long driverId,
+	        @RequestParam(defaultValue = "5") double radiusKm
+	) {
+	    return ResponseEntity.ok(rideService.getAvailableRidesForDriver(driverId, radiusKm));
+	}
+	
+	
+	
 	 // Get all available drivers
-    @GetMapping("/available")
-    public List<DriverEntity> getAvailableDrivers(@RequestParam(required = false) VehicleType vehicleType) {
-        if (vehicleType != null) {
-            return driverService.getAvailableDrivers(vehicleType);
-        } 
-        return driverRepo.findByStatus(DriverStatus.AVAILABLE);
-        }
+//    @GetMapping("/available")
+//    public List<DriverEntity> getAvailableDrivers(@RequestParam(required = false) VehicleType vehicleType) {
+//        if (vehicleType != null) {
+//            return driverService.getAvailableDriversWithVehicle(vehicleType);
+//        } 
+//        return driverService.getAvailableDrivers();
+//        }
+    
+    @PostMapping("/set-availability/{driverId}")
+    public ResponseEntity<DriverEntity> setDriverAvailability(@PathVariable Long driverId) {
+		DriverEntity updatedDriver = driverService.setDriverAvailabilty(driverId);
+		return ResponseEntity.ok(updatedDriver);
+	}
+    
+    @GetMapping("/nearby")
+    public List<neabyDto> nearbyDrivers(
+        @RequestParam double lat,
+        @RequestParam double lng,
+        @RequestParam double radius,
+        @RequestParam DriverStatus status
+    ) {
+        return rideService.getNearbyDrivers(lat, lng, radius, status);
+    }
+    
+    @PostMapping("/{driverId}/accept/{rideId}")
+    public ResponseEntity<RideResponseDto> acceptRide(
+            @PathVariable Long driverId,
+            @PathVariable Long rideId
+    ) {
+        return ResponseEntity.ok(rideService.driverAcceptRide(driverId, rideId));
+    }
+
+    @PostMapping("/{driverId}/reject/{rideId}")
+    public ResponseEntity<String> rejectRide(
+            @PathVariable Long driverId,
+            @PathVariable Long rideId
+    ) {
+        //  reject = just ignore in UI; you can log later
+        return ResponseEntity.ok("Rejected");
+    }
+    
 }

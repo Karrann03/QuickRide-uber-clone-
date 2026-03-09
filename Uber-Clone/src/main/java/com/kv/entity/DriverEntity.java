@@ -2,6 +2,7 @@ package com.kv.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kv.RideStatus.DriverStatus;
 import com.kv.RideStatus.VehicleType;
 
@@ -9,6 +10,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,6 +38,9 @@ public class DriverEntity {
 
     @Column(name = "email",unique = true)
     private String email;
+    
+    @Column(name = "password")
+    private String password;
 
     @Column(name = "phone")
     private String phone;
@@ -49,13 +54,14 @@ public class DriverEntity {
     private VehicleType vehicleType;
 
     // === ASSOCIATION: One driver can have many rides ===
-    @OneToMany(mappedBy = "driver")
+    @OneToMany(mappedBy = "driver", fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<RideEntity> rides;
     
 
     @Column(name="current_lat")
-    private Double currentLat;
+    private Double latitude;
 
     @Column(name="current_long")
-    private Double currentLong;
+    private Double longitude;
 }

@@ -108,6 +108,9 @@ Implemented:
 
 ---
 
+<img width="1536" height="1024" alt="Diagram_QuickRide" src="https://github.com/user-attachments/assets/0f8dd97b-f5ad-4e84-9736-cd18a566874a" />
+
+
 # 🛠 Tech Stack
 
 ## Backend
